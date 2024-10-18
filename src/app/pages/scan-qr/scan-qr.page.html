@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>scan-qr</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">scan-qr</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- QR Code Scanner dentro de la sección de contenido -->
+  <ngx-scanner-qrcode #action="scanner"></ngx-scanner-qrcode>
+
+  <!-- Botón para iniciar/detener el escáner -->
+  <ion-button expand="full" (click)="action.isStart ? action.stop() : action.start()">
+    {{ action.isStart ? 'Stop' : 'Start' }} Scanning
+  </ion-button>
+
+  <!-- Botón para escanear y redirigir al link -->
+  <ion-button expand="full" (click)="Scan(action.data.value)" [disabled]="!action.isStart || !action.data.value">
+    Scan QR Code
+  </ion-button>
+</ion-content>

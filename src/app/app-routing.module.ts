@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './Guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -17,12 +18,19 @@ const routes: Routes = [
   },
   {
     path: 'welcome',
-    loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomePageModule)
+    loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'welcomealum',
-    loadChildren: () => import('./pages/welcomealum/welcomealum.module').then( m => m.WelcomealumPageModule)
+    loadChildren: () => import('./pages/welcomealum/welcomealum.module').then( m => m.WelcomealumPageModule),
+    canActivate: [AuthGuard]
   },
+  {
+    path: 'scan-qr',
+    loadChildren: () => import('./pages/scan-qr/scan-qr.module').then( m => m.ScanQrPageModule),
+    canActivate: [AuthGuard]
+  }
 
 ];
 

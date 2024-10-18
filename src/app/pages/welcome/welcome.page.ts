@@ -10,17 +10,16 @@ import { MenuController } from '@ionic/angular';
 export class WelcomePage implements OnInit {
   username: string = ''; // Variable para el username
 
-  constructor(private route: ActivatedRoute, 
+  constructor(private route: ActivatedRoute,
     private router: Router, private menu: MenuController) { }
 
   ngOnInit() {
-    // Suscribirse a los parámetros de la URL para obtener el username
     this.route.queryParams.subscribe(params => {
       this.username = params['username'] || ''; // Captura el username de la URL
     });
   }
 
-   cerrarSesion() { 
+   cerrarSesion() {
     if (confirm('¿Desea cerrar sesión?')) {
       this.router.navigate(['/home']);
     }
