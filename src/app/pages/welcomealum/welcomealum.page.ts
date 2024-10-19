@@ -18,7 +18,8 @@ export class WelcomealumPage implements OnInit {
   }
   cerrarSesion() {
     if (confirm('¿Desea cerrar sesión?')) {
-      this.router.navigate(['/home']);
+      localStorage.removeItem('token');  // Elimina el token
+      this.router.navigate(['/home']);    // Redirige al usuario a la página de inicio
     }
   }
   redirectScanQR() {

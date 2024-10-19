@@ -95,11 +95,13 @@ export class HomePage {
   handleLogin(token: any, cleanUsername: string): void {
     const perfil = token.perfil;
     console.log('perfil:', perfil);
-
-
+  
     if (token && token.data && token.auth && token.auth.token) {
       console.log('Usuario válido');
-      if (perfil === 'profesor') {
+      // Guardar el token 
+      localStorage.setItem('token', token.auth.token); 
+  
+      if (perfil === 'docente') {
         this.router.navigate(['/welcome'], { queryParams: { username: cleanUsername } });
       } else if (perfil === 'estudiante') {
         this.router.navigate(['/welcomealum'], { queryParams: { username: cleanUsername } });
@@ -109,6 +111,7 @@ export class HomePage {
       console.log('Usuario inválido');
     }
   }
+  
 
   recoveryPassword() {
     // metodo para recuperar la del username en realidad para ocuparlo en recuperar contraseña

@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { ApiPresenteProfeService } from '../service/api-presente-profe.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-
-  constructor(private router: Router,
-    private apiService : ApiPresenteProfeService
-  ) {}
+  constructor(private router: Router) {}
 
   canActivate(): boolean {
-    if (this.apiService.isAuthenticated()) {
-      return true; // Allow access if the user is authenticated
+    const token = localStorage.getItem('token');
+    if (token) {
+      // Si hay token, permite el acceso
+      return true;
     } else {
-      this.router.navigate(['/home']); // Redirect to login if not authenticated
-      return false; // Prevent access to the route
+      // Si no hay token, redirige al login o página de inicio
+      this.router.navigate(['/home']);
+      return false;
     }
   }
 }
