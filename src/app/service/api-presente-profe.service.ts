@@ -12,6 +12,13 @@ export class ApiPresenteProfeService {
 
   constructor(private http: HttpClient) {}
 
+  // Método de recuperación de contraseña 
+  recuperarPassword(correo: string): Observable<any> {
+    const url = `${this.apiUrl}/v1/auth/recuperar`;
+    const body = { correo: correo }; 
+    return this.http.post(url, body); 
+  }
+
   getToken(params: Params): Observable<any> {
     const urlAuth = this.apiUrl + '/v1/auth';
     const tokenObservable = this.http.post<Token>(urlAuth, params);
