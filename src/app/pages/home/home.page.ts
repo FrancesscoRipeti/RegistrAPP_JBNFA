@@ -98,19 +98,24 @@ export class HomePage {
   
     if (token && token.data && token.auth && token.auth.token) {
       console.log('Usuario válido');
-      // Guardar el token 
-      localStorage.setItem('token', token.auth.token); 
-  
+      // Guardar el token
+      localStorage.setItem('token', token.auth.token);
+      
+      // Guardar el correo en localStorage 
+      localStorage.setItem('username', cleanUsername); 
+      
+      // Redirigir sin incluir el correo en la URL
       if (perfil === 'docente') {
-        this.router.navigate(['/welcome'], { queryParams: { username: cleanUsername } });
+        this.router.navigate(['/welcome']);
       } else if (perfil === 'estudiante') {
-        this.router.navigate(['/welcomealum'], { queryParams: { username: cleanUsername } });
+        this.router.navigate(['/welcomealum']);
       }
     } else {
       this.presentAlert('Usuario o contraseña incorrectos.');
       console.log('Usuario inválido');
     }
   }
+  
   
 
   recoveryPassword() {
