@@ -56,4 +56,14 @@ ion-menu, ion-header {
   .btn-ScanQR {
     position: relative;
     z-index: 100;
+    
   }
+  ion-label {
+    font-weight: normal; /* Configuración general */
+  }
+  
+  ion-label strong {
+    font-weight: bold; /* Negrita solo para los títulos */
+  }
+  
+  

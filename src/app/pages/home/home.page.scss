@@ -1,3 +1,6 @@
+
+
+
 #content {
   background-image: url(../../../assets/img/bg-principal-home.jpg);
   font: sans-serif;
@@ -51,9 +54,12 @@ ion-title {
 }
 
 ion-card-title {
-  color: #ffffff;
+  font-family: 'Arial', sans-serif; 
   font-size: 35px;
   text-align: center;
+  color: #ffffff; 
+  font-weight: bold; 
+  letter-spacing: 1px; 
 }
 
 ion-card-header {
@@ -80,4 +86,6 @@ ion-tab-button {
   --color-selected: #1df47a; /* Color de icono y texto al estar seleccionados */
   --color: #ffffff; /* Color de icono y texto no seleccionados */
 }
+
+
 
